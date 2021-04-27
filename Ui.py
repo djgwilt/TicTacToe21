@@ -1,7 +1,7 @@
 from Game import Game, GameError
 from abc import ABC, abstractmethod
 from itertools import product
-from tkinter import END, Button, Tk, Frame, X, Toplevel, StringVar, Text, Scrollbar, LEFT, RIGHT, Y, Grid, N, S, W,E
+from tkinter import END, Button, Tk, Frame, X, Toplevel, StringVar, Text, Scrollbar, LEFT, RIGHT, Y, Grid, N, S, W,E, Message
 
 class Ui(ABC):
 
@@ -44,8 +44,11 @@ class Gui(Ui):
         self.__GameInProgress = False
 
     def _help_callback(self):
-        pass
-
+        help_win = Toplevel(self.__root)
+        help_text = "Blah blah"
+        Message(help_win, text=help_text).pack(fill=X)
+        Button(help_win,text="Dismiss",command=help_win.destroy).pack(fill=X)
+    
     def _dismiss_game(self):
         self.__GameInProgress = False
         self.__game_win.destroy()
